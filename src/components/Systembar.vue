@@ -1,0 +1,43 @@
+<template>
+    <v-toolbar color="black">
+        <v-toolbar-items>
+        <v-btn text class="grey--text subtitle-2">HOME</v-btn>
+        <v-btn text class="grey--text subtitle-2">ABOUT</v-btn>
+        <v-btn text class="grey--text subtitle-2">CONTACT</v-btn>
+        <v-menu transition="scale-transition" open-on-hover offset-y>
+            <template v-slot:activator="{ on }">
+                <v-btn text v-on="on" class="grey--text subtitle-2">FAQ</v-btn>
+            </template>
+
+            <v-list >
+                <v-list-item v-for="(link, index) in links" @click="" :key="index">
+                    <v-list-item-icon class="mr-5">
+                        <v-icon v-text="link.icon" right></v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-title class="ml-0 pl-0">{{ link.text }}</v-list-item-title>
+                </v-list-item>
+            </v-list>
+        </v-menu>
+        </v-toolbar-items>
+                    
+        <v-spacer></v-spacer>
+
+        <v-toolbar-items>
+            <v-btn text class="grey--text subtitle-2">LOGIN</v-btn>
+            <v-btn text class="grey--text subtitle-2">REGISTER</v-btn>
+            <v-btn text class="grey--text subtitle-2">WISHLIST</v-btn>
+        </v-toolbar-items>    
+    </v-toolbar>
+</template>
+
+<script>
+    export default {
+        data: () => ({
+            links: [
+            { icon: 'mdi-domain', text: 'Create', route: '/' },
+            { icon: 'mdi-email', text: 'Unlimited', route: '/' },
+            { icon: 'mdi-message-text', text: 'Menus', route: '/' },
+            ]
+        }),
+    }
+</script>

@@ -1,5 +1,9 @@
 <template>
     <v-app>
+        <v-system-bar app color="black"> 
+            <Systembar />        
+        </v-system-bar>
+
         <v-app-bar app>
             <v-toolbar-title class="headline text-uppercase">
                 <span>Vuetify</span>
@@ -21,14 +25,17 @@
 
 <script>
 import HelloWorld from './components/HelloWorld';
+import Systembar from './components/Systembar';
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld,
-  },
-  data: () => ({
-    //
-  }),
+    name: 'App',
+
+    components: {
+        HelloWorld, Systembar
+    },
+
+    data: () => ({
+        //
+    }),
 };
 </script>
