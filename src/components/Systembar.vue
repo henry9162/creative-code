@@ -1,12 +1,12 @@
 <template>
     <v-toolbar color="black">
         <v-toolbar-items>
-        <v-btn text class="grey--text subtitle-2">HOME</v-btn>
-        <v-btn text class="grey--text subtitle-2">ABOUT</v-btn>
-        <v-btn text class="grey--text subtitle-2">CONTACT</v-btn>
+        <v-btn text class="grey--text subtitle-2 font-weight-black">HOME</v-btn>
+        <v-btn text class="grey--text subtitle-2 font-weight-black">ABOUT</v-btn>
+        <v-btn text class="grey--text subtitle-2 font-weight-black">CONTACT</v-btn>
         <v-menu transition="scale-transition" open-on-hover offset-y>
             <template v-slot:activator="{ on }">
-                <v-btn text v-on="on" class="grey--text subtitle-2">FAQ</v-btn>
+                <v-btn text v-on="on" class="grey--text subtitle-2 font-weight-black">FAQ</v-btn>
             </template>
 
             <v-list >
@@ -23,9 +23,9 @@
         <v-spacer></v-spacer>
 
         <v-toolbar-items>
-            <v-btn text class="grey--text subtitle-2">LOGIN</v-btn>
-            <v-btn text class="grey--text subtitle-2">REGISTER</v-btn>
-            <v-btn text class="grey--text subtitle-2">WISHLIST</v-btn>
+            <v-btn text class="grey--text subtitle-2 font-weight-black">LOGIN</v-btn>
+            <v-btn text class="grey--text subtitle-2 font-weight-black">REGISTER</v-btn>
+            <v-btn text class="grey--text subtitle-2 font-weight-black">WISHLIST</v-btn>
         </v-toolbar-items>    
     </v-toolbar>
 </template>
