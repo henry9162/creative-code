@@ -4,9 +4,11 @@
         <v-btn text class="grey--text subtitle-2 font-weight-black">HOME</v-btn>
         <v-btn text class="grey--text subtitle-2 font-weight-black">ABOUT</v-btn>
         <v-btn text class="grey--text subtitle-2 font-weight-black">CONTACT</v-btn>
-        <v-menu transition="scale-transition" open-on-hover offset-y>
+        <v-menu transition="scale-transition" offset-y>
             <template v-slot:activator="{ on }">
-                <v-btn text v-on="on" class="grey--text subtitle-2 font-weight-black">FAQ</v-btn>
+                <v-btn text v-on="on" class="grey--text subtitle-2 font-weight-black">
+                    <span>FAQ</span>
+                </v-btn>
             </template>
 
             <v-list >
