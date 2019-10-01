@@ -12,7 +12,7 @@
             </v-toolbar-title>
             <v-spacer></v-spacer>
 
-            <v-menu v-model="menu" min-width="900" :close-on-content-click="false" nudge-bottom="13" nudge-left="320" open-on-hover :nudge-width="200" offset-y>
+            <v-menu v-model="menu" max-width="900" :close-on-content-click="false" nudge-bottom="13" nudge-left="320" open-on-hover :nudge-width="200" offset-y>
                 <template v-slot:activator="{ on }">
                   <v-btn text dark style="height: 57px" v-on="on" class="font-weight-bold subtitle-1">All Categories</v-btn>
                 </template>
@@ -20,7 +20,7 @@
                 <v-card>
                     <v-container class="ma-0 pa-0">
                         <v-row class="ma-0">
-                            <v-col md="4">
+                            <v-col class="pa-0" md="4">
                                 <div style="background: grey">
                                     <v-card-text class="text-center px-12 pt-12 pb-8">
                                         <div class="display-2 mt-6 white--text font-weight-black">Custom</div>
@@ -38,10 +38,46 @@
                             </v-col>
 
                             <v-col md="8" color="grey darken-4">
-                                <v-card-text>
-                                    <div class="headline mb-2 black--text">Category Items</div>
-                                    <div class="headline black--text">More Items</div>
-                                </v-card-text>
+                                <v-container class="pt-0 mr-0 ml-0">
+                                    <v-row>
+                                        <v-col v-for="(item, i) in categories" :key="i" class="pa-0">
+                                            <v-list dense flat>
+                                                <v-subheader :inset="true" class="subtitle-2 font-weight-black" v-text="item.title"></v-subheader>
+                                                <v-divider class="mx-4"></v-divider>
+                                                <v-list-item-group v-model="listGroup" color="primary">
+                                                    <v-list-item v-for="(item, i) in items" :key="i">
+                                                        <v-list-item-icon class="ml-3 mr-2">
+                                                            <v-icon right v-text="item.icon"></v-icon>
+                                                        </v-list-item-icon>
+                                                        <v-list-item-content>
+                                                          <v-list-item-title v-text="item.text"></v-list-item-title>
+                                                        </v-list-item-content>
+                                                    </v-list-item>
+                                                </v-list-item-group>
+                                            </v-list>
+                                        </v-col>
+                                    </v-row>
+
+                                    <v-row>
+                                        <v-col v-for="(item, i) in categories2" :key="i" class="pt-0">
+                                            <v-list class="mt-0 pt-0" dense flat>
+                                                <v-subheader :inset="true" class="subtitle-2 font-weight-black" v-text="item.title"></v-subheader>
+                                                <v-divider></v-divider>
+                                                <v-list-item-group v-model="listGroup" color="primary">
+                                                    <v-list-item v-for="(item, i) in items" :key="i">
+                                                        <v-list-item-icon class="ml-3 mr-2">
+                                                            <v-icon right v-text="item.icon"></v-icon>
+                                                        </v-list-item-icon>
+                                                        <v-list-item-content>
+                                                          <v-list-item-title v-text="item.text"></v-list-item-title>
+                                                        </v-list-item-content>
+                                                    </v-list-item>
+                                                </v-list-item-group>
+                                            </v-list>
+                                        </v-col>
+                                        
+                                    </v-row>
+                                </v-container>
                             </v-col>
                         </v-row>
                     </v-container>
@@ -73,10 +109,15 @@ export default {
     },
 
     data: () => ({
-        fav: true,
         menu: false,
-        message: false,
-        hints: true
+        listGroup: 1,
+        categories: [ { title: 'MEN' }, { title: 'WOMEN'}, { title: 'KIDS'} ],
+        categories2: [ { title: 'ACCESORIES' }, { title: 'BAGS'}, { title: 'MORE'} ],
+        items: [
+          { text: 'Real-Time', icon: 'mdi-clock' },
+          { text: 'Audience', icon: 'mdi-account' },
+          { text: 'Conversions', icon: 'mdi-flag' },
+        ],
     }),
 };
 </script>
