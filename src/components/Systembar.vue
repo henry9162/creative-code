@@ -7,7 +7,7 @@
         <v-menu transition="scale-transition" offset-y>
             <template v-slot:activator="{ on }">
                 <v-btn text v-on="on" class="grey--text subtitle-2 font-weight-black">
-                    <span>FAQ</span>
+                    FAQ <v-icon color="grey" class="headline-1 mt-1">mdi-chevron-down</v-icon>
                 </v-btn>
             </template>
 

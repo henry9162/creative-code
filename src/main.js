@@ -4,6 +4,9 @@ import router from './router'
 import store from './store'
 import './registerServiceWorker'
 import vuetify from './plugins/vuetify';
+global.jQuery = require("jquery");
+let $ = global.jQuery;
+global.$ = $;
 
 Vue.config.productionTip = false
 
