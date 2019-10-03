@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-app-bar app dark>
+        <v-app-bar app dark color="#313846">
             <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="grey--text"></v-app-bar-nav-icon>
 
             <v-toolbar-title class="headline text-uppercase">
@@ -90,7 +90,7 @@
                 <v-icon class="display-1">mdi-cart-remove</v-icon>
             </v-btn>
 
-            <v-menu v-model="menu2" close-delay="200" max-width="200" :close-on-content-click="false" nudge-bottom="13" nudge-left="120" open-on-hover :nudge-width="200" offset-y>
+            <v-menu v-model="menu2" close-delay="200" max-width="200" :close-on-content-click="false" nudge-bottom="13" nudge-left="70" open-on-hover :nudge-width="200" offset-y>
                 <template v-slot:activator="{ on }">
                     <v-btn text dark style="height: 57px" v-on="on">
                         <v-avatar size="36">
