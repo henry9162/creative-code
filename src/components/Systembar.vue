@@ -1,5 +1,5 @@
 <template>
-    <v-toolbar color="black">
+    <v-toolbar height="24" flat color="black">
         <v-toolbar-items>
         <v-btn text class="grey--text subtitle-2 font-weight-black">HOME</v-btn>
         <v-btn text class="grey--text subtitle-2 font-weight-black">ABOUT</v-btn>

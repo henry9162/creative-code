@@ -1,6 +1,6 @@
 <template>
     <v-app>
-        <v-system-bar app color="black"> 
+        <v-system-bar absolute app color="black"> 
             <Systembar />        
         </v-system-bar>
 
