@@ -48,7 +48,7 @@ export default [
       featured: true,
       image: 'https://www.hellomagazine.com/imagenes/fashion/2019100478650/denim-jacket-puff-sleeves-river-island-back-in-stock/0-380-268/river-island-denim-jacekt-t.jpg',
       inventory: 20,
-      description: 'This is for women',
+      description: 'This is a uniquely tailored gown for fashion cautious ladies. It goes well with any type of outing or events',
       date: '2019-09-13 11:14:26.817'
     },
     {
@@ -73,7 +73,7 @@ export default [
       featured: false,
       featured: true,
       image: 'https://media.monsoon.co.uk/medias/sys_master/9466489503774.jpg?buildNumber=5b3c63442ae1c2b9853aceaecd154c50a4b3311a',
-      inventory: 20,
+      inventory: 0,
       description: 'This is for men',
       date: '2019-09-13 11:16:26.817'
     },

@@ -4,8 +4,11 @@
             <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="grey--text"></v-app-bar-nav-icon>
 
             <v-toolbar-title class="display-1 text-uppercase">
-                <span class="font-weight-bold text-uppercase">Ecommerce Logo</span>
+                <v-hover v-slot:default="{ hover }">
+                    <router-link to="/" tag="span" :class="hover ? 'hover-cursor':''" class="font-weight-bold text-uppercase">Ecommerce Logo</router-link>
+                </v-hover>
             </v-toolbar-title>
+            
             <v-spacer></v-spacer>
 
             <v-menu v-model="menu" close-delay="200" max-width="900" :close-on-content-click="false" nudge-bottom="20" nudge-left="320" open-on-hover :nudge-width="200" offset-y>
@@ -151,55 +154,34 @@
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                menu: false,
-                menu2: false,
-                drawer: null,
-                categories: [ { title: 'MEN' }, { title: 'WOMEN'}, { title: 'KIDS'} ],
-                categories2: [ { title: 'ACCESORIES' }, { title: 'BAGS'}, { title: 'MORE'} ],
-                items: [
+export default {
+    data() {
+        return {
+            menu: false,
+            menu2: false,
+            drawer: null,
+            categories: [ { title: 'MEN' }, { title: 'WOMEN'}, { title: 'KIDS'} ],
+            categories2: [ { title: 'ACCESORIES' }, { title: 'BAGS'}, { title: 'MORE'} ],
+            items: [
                 { text: 'Real-Time', icon: 'mdi-clock', title: 'Home' },
                 { text: 'Audience', icon: 'mdi-account', title: 'About' },
                 { text: 'Conversions', icon: 'mdi-flag', title: 'Profile' },
-                ],
-                items2: [
-                {
-                    action: 'local_activity',
-                    title: 'Attractions',
-                    items: [
-                    { title: 'List Item' },
-                    ],
-                },
-                {
-                    action: 'school',
-                    title: 'Education',
-                    items: [
-                    { title: 'List Item' },
-                    ],
-                },
-                {
-                    action: 'directions_run',
-                    title: 'Family',
-                    items: [
-                    { title: 'List Item' },
-                    ],
-                },
-                {
-                    action: 'healing',
-                    title: 'Health',
-                    items: [
-                    { title: 'List Item' },
-                    ],
-                },
-                ],
-            }
+            ],
+            items2: [
+                { action: 'local_activity', title: 'Attractions', items: [ { title: 'List Item' } ], },
+                { action: 'school', title: 'Education', items: [ { title: 'List Item' } ] },
+                { action: 'directions_run', title: 'Family', items: [ { title: 'List Item' } ] },
+                { action: 'healing', title: 'Health', items: [ { title: 'List Item' } ] },
+            ],
         }
     }
+}
 </script>
 
 <style lang="scss">
+    .hover-cursor {
+        cursor: pointer;
+    }
     .category-menu-background {
         background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://tinuiti.com/wp-content/uploads/legacysitecontent/cpcs/posts_01/2018/01/23173041/photo-1511511450040-677116ff389e-1024x680.jpg');
         background-position: center;

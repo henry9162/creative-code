@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import Systembar from './components/Systembar';
-import ApplicationBar from './components/ApplicationBar';
+import Systembar from './components/navigation/Systembar';
+import ApplicationBar from './components/navigation/ApplicationBar';
 
 export default {
     name: 'App',

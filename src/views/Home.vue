@@ -64,8 +64,8 @@
 </template>
 
 <script>
-import categories from '../components/Categories'
-import homeProductFilters from '../components/HomeProductFilters'
+import categories from '../components/home-page-products/Categories'
+import homeProductFilters from '../components/home-page-products/HomeProductFilters'
 import newsletterFooter from '../components/Footer'
 
 export default {
