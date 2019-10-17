@@ -89,7 +89,7 @@
                 <v-icon class="display-1">mdi-magnify</v-icon>
             </v-btn>
 
-            <v-btn icon>
+            <v-btn icon class="mx-4">
                 <v-icon class="display-1">mdi-cart-remove</v-icon>
             </v-btn>
 

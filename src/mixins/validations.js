@@ -1,12 +1,12 @@
-import { required, maxLength, minLength, email, numeric } from 'vuelidate/lib/validators'
+import { required, maxLength, email, minLength, numeric } from 'vuelidate/lib/validators'
+
 
 export default {
-
     validations: {
         form: {
-            firstName: { required, maxLength: maxLength(10) },
-            lastName: { required, maxLength: maxLength(10) },
-            brandName: { maxLength: maxLength(10) },
+            first_name: { required, maxLength: maxLength(10) },
+            last_name: { required, maxLength: maxLength(10) },
+            company_name: { maxLength: maxLength(20) },
             phone: { required, maxLength: maxLength(11), minLength: maxLength(11), numeric },
             email: { required, email },
             sex: { required },
@@ -17,21 +17,21 @@ export default {
     computed: {
         firstNameErrors () {
         const errors = []
-        if (!this.$v.form.firstName.$dirty) return errors
-        !this.$v.form.firstName.required && errors.push('First Name is required!')
-        !this.$v.form.firstName.maxLength && errors.push('First name must be at most 10 characters long')
+        if (!this.$v.form.first_name.$dirty) return errors
+        !this.$v.form.first_name.required && errors.push('First Name is required!')
+        !this.$v.form.first_name.maxLength && errors.push('First name must be at most 10 characters long')
         return errors
       },
       lastNameErrors () {
         const errors = []
-        if (!this.$v.form.lastName.$dirty) return errors
-        !this.$v.form.lastName.maxLength && errors.push('last name must be at most 10 characters long')
-        !this.$v.form.lastName.required && errors.push('last name is required.')
+        if (!this.$v.form.last_name.$dirty) return errors
+        !this.$v.form.last_name.maxLength && errors.push('last name must be at most 10 characters long')
+        !this.$v.form.last_name.required && errors.push('last name is required.')
         return errors
       },
-      brandNameErrors () {
+      companyNameErrors () {
         const errors = []
-        !this.$v.form.brandName.maxLength && errors.push('Brand name must be at most 10 characters long')
+        !this.$v.form.company_name.maxLength && errors.push('Brand name must be at most 10 characters long')
         return errors
       },
       phoneErrors () {
@@ -63,7 +63,7 @@ export default {
         !this.$v.form.password.required && errors.push('password is required')
         return errors
       },
-
+      
     },
 
 }

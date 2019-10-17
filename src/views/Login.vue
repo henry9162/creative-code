@@ -9,9 +9,9 @@
                             <v-row>
                                 <v-col cols="12">
                                     <v-text-field 
-                                        v-model="form.email"
+                                        v-model="form.email" prepend-inner-icon="mdi-email"
                                         class="pt-0" color="orange" type="email" label="Email" 
-                                        :error-messages="emailErrors" 
+                                        :error-messages="emailErrors" clearable
                                         @input="$v.form.email.$touch()"
                                         @blur="$v.form.email.$touch()" required>
                                     </v-text-field>
@@ -19,8 +19,8 @@
                                 <v-col cols="12">
                                     <v-text-field 
                                         class="pt-0" v-model="form.password" hint="At least 8 characters" counter
-                                        :error-messages="passwordErrors" 
-                                        @input="$v.form.password.$touch()"
+                                        :error-messages="passwordErrors" prepend-inner-icon="mdi-lock-question"
+                                        @input="$v.form.password.$touch()" clearable
                                         @blur="$v.form.password.$touch()" 
                                         :append-icon="show1 ? 'visibility' : 'visibility_off'" 
                                         :type="show1 ? 'text' : 'password'"

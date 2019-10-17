@@ -5,6 +5,15 @@
         </v-system-bar>
 
         <div class="wrapper">
+
+            <!-- SnackBar -->
+            <v-snackbar :color="color" :timeout=3000 top right v-model="snackBar">
+                <span v-text="alertMessage"></span>
+                <v-btn color="white" text @click="deactivateSnackbar">
+                    <v-icon>mdi-close-outline</v-icon>
+                </v-btn>
+            </v-snackbar>
+
             <application-bar />
 
             <v-content>
@@ -17,9 +26,12 @@
 <script>
 import Systembar from './components/navigation/Systembar';
 import ApplicationBar from './components/navigation/ApplicationBar';
+import alerts from './mixins/Alerts.js'
 
 export default {
     name: 'App',
+
+    mixins: [alerts],
 
     components: {
         Systembar, ApplicationBar
@@ -28,6 +40,10 @@ export default {
     data: () => ({
        
     }),
+
+    created() {
+        this.deactivateSnackbar();
+    }
 };
 </script>
 
