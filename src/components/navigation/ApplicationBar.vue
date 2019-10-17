@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="navigation-wrapper">
         <v-app-bar absolute height="80" app dark color="#313846">
             <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="grey--text"></v-app-bar-nav-icon>
 
@@ -179,6 +179,11 @@ export default {
 </script>
 
 <style lang="scss">
+    .navigation-wrapper {
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
     .hover-cursor {
         cursor: pointer;
     }

@@ -1,7 +1,7 @@
 <template>
     <v-toolbar height="24" flat color="black">
         <v-toolbar-items>
-        <v-btn text class="grey--text subtitle-2 font-weight-black">HOME</v-btn>
+        <v-btn @click="$router.push({ name: 'home' })" text class="grey--text subtitle-2 font-weight-black">HOME</v-btn>
         <v-btn text class="grey--text subtitle-2 font-weight-black">ABOUT</v-btn>
         <v-btn text class="grey--text subtitle-2 font-weight-black">CONTACT</v-btn>
         <v-menu transition="scale-transition" offset-y>

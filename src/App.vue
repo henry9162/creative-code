@@ -4,11 +4,13 @@
             <Systembar />        
         </v-system-bar>
 
-        <application-bar />
+        <div class="wrapper">
+            <application-bar />
 
-        <v-content>
-            <router-view></router-view>  
-        </v-content>
+            <v-content>
+                <router-view></router-view>  
+            </v-content>
+        </div>
     </v-app>
 </template>
 
@@ -28,3 +30,9 @@ export default {
     }),
 };
 </script>
+
+<style lang="scss">
+    .wrapper {
+        position: relative;
+    }
+</style>
