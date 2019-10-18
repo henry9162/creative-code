@@ -32,7 +32,7 @@
                                         :error-messages="companyNameErrors"
                                         @input="$v.form.company_name.$touch()"
                                         @blur="$v.form.company_name.$touch()"
-                                        class="pt-0 orange--text" hint="Optional" color="orange"
+                                        class="pt-0" hint="Optional" color="orange"
                                         label="Brand Name">
                                     </v-text-field>
                                 </v-col>
@@ -121,7 +121,6 @@ export default {
         },
         items: [ 'Female', 'Male' ],
         show1: false,
-        loading: false
     }),
 
     computed: {

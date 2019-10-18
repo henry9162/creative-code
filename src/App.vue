@@ -17,7 +17,9 @@
             <application-bar />
 
             <v-content>
-                <router-view></router-view>  
+                <transition enter-active-class="animated pulse" leave-active-class="animated fadeOut" mode="out-in">
+                    <router-view></router-view> 
+                </transition> 
             </v-content>
         </div>
     </v-app>

@@ -1,5 +1,5 @@
 <template>
-    <div class="navigation-wrapper">
+    <div class="">
         <v-app-bar absolute height="80" app dark color="#313846">
             <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="grey--text"></v-app-bar-nav-icon>
 
@@ -93,32 +93,47 @@
                 <v-icon class="display-1">mdi-cart-remove</v-icon>
             </v-btn>
 
-            <v-menu v-model="menu2" close-delay="200" max-width="200" :close-on-content-click="false" nudge-bottom="13" nudge-left="70" open-on-hover :nudge-width="200" offset-y>
-                <template v-slot:activator="{ on }">
-                    <v-btn text dark style="height: 57px" v-on="on">
-                        <v-avatar size="36">
-                            <img class="mr-4" src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
-                        </v-avatar>
-                        User <v-icon>mdi-chevron-down</v-icon>
-                    </v-btn>
-                </template>
+            <div v-if="isAuth">
+                <v-menu v-model="menu2" close-delay="200" max-width="200" :close-on-content-click="false" nudge-bottom="13" nudge-left="55" open-on-hover :nudge-width="200" offset-y>
+                    <template v-slot:activator="{ on }">
+                        <v-btn text dark style="height: 57px" v-on="on">
+                            <v-avatar size="36">
+                                <img class="mr-4" src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
+                            </v-avatar>
+                            <span v-text="user.first_name"></span> <v-icon>mdi-chevron-down</v-icon>
+                        </v-btn>
+                    </template>
 
-                <v-card>
-                    <v-list nav dense>
-                        <v-list-item-group color="primary">
-                            <v-list-item v-for="(item, i) in items" :key="i">
-                                <v-list-item-icon class="mr-4">
-                                    <v-icon v-text="item.icon"></v-icon>
-                                </v-list-item-icon>
+                    <v-card>
+                        <v-list nav dense>
+                            <v-list-item-group color="primary">
+                                <v-list-item v-for="(item, i) in items" :key="i">
+                                    <v-list-item-icon class="mr-4">
+                                        <v-icon v-text="item.icon"></v-icon>
+                                    </v-list-item-icon>
 
-                                <v-list-item-content>
-                                    <v-list-item-title v-text="item.text"></v-list-item-title>
-                                </v-list-item-content>
-                            </v-list-item>
-                        </v-list-item-group>
-                    </v-list>
-                </v-card>
-            </v-menu>
+                                    <v-list-item-content>
+                                        <v-list-item-title v-text="item.text"></v-list-item-title>
+                                    </v-list-item-content>
+                                </v-list-item>
+
+                                <v-divider></v-divider>
+
+                                <v-list-item @click="logout">
+                                    <v-list-item-icon class="mr-4">
+                                        <v-icon>mdi-logout</v-icon>
+                                    </v-list-item-icon>
+
+                                    <v-list-item-content>
+                                        <v-list-item-title>Logout</v-list-item-title>
+                                    </v-list-item-content>
+                                </v-list-item>
+                            </v-list-item-group>
+                        </v-list>
+                    </v-card>
+                </v-menu>
+            </div>
+            
         </v-app-bar>
 
         <v-navigation-drawer v-model="drawer" absolute temporary>
@@ -163,9 +178,8 @@ export default {
             categories: [ { title: 'MEN' }, { title: 'WOMEN'}, { title: 'KIDS'} ],
             categories2: [ { title: 'ACCESORIES' }, { title: 'BAGS'}, { title: 'MORE'} ],
             items: [
-                { text: 'Real-Time', icon: 'mdi-clock', title: 'Home' },
-                { text: 'Audience', icon: 'mdi-account', title: 'About' },
-                { text: 'Conversions', icon: 'mdi-flag', title: 'Profile' },
+                { text: 'Profile', icon: 'mdi-account'},
+                { text: 'Dashboard', icon: 'mdi-view-dashboard-outline' },
             ],
             items2: [
                 { action: 'local_activity', title: 'Attractions', items: [ { title: 'List Item' } ], },
@@ -174,6 +188,15 @@ export default {
                 { action: 'healing', title: 'Health', items: [ { title: 'List Item' } ] },
             ],
         }
+    },
+
+    computed: {
+        isAuth(){ return this.$store.getters.isAuthenticated },
+        user() { return this.$store.getters.loggedUser }
+    },
+
+    methods: {
+        logout() { this.$store.dispatch('logout') }
     }
 }
 </script>

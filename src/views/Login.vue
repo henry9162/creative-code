@@ -44,7 +44,10 @@
                             </v-row>
                         </v-card-text>
                         <v-card-actions class="d-flex pt-1 justify-center">
-                            <v-btn width="100%" color="orange darken-1" dark large>Login</v-btn>
+                            <v-btn @click="login" width="100%" color="orange darken-1" dark large>
+                               <v-progress-circular v-if="loader" :width="3" size="20" color="white" indeterminate></v-progress-circular>
+                                <span v-if="!loader">Login</span>
+                            </v-btn>
                         </v-card-actions>
 
                         <v-card-text class="black--text pb-0 d-flex d-flex-col align-center justify-center">Don't have an account yet?</v-card-text>
@@ -77,6 +80,29 @@ export default {
         },
         show1: false
     }),
+
+    methods: {
+        login(){
+            if(!this.$v.$touch()){
+                this.$store.dispatch('login', { username: this.form.email, password: this.form.password })
+                    .then(response => {
+                        this.$v.$reset();
+                        this.form.email = '';
+                        this.form.password = '';
+
+                        setTimeout(() => {
+                            this.$router.push({name: 'home'})
+                        }, 3000);
+                    })
+            }
+        }
+    },
+
+    computed: {
+        loader(){
+            return this.$store.getters.loader;
+        }
+    }
 
 }
 </script>

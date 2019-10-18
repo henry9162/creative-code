@@ -25,8 +25,8 @@
         <v-spacer></v-spacer>
 
         <v-toolbar-items>
-            <v-btn @click="$router.push({ name: 'login' })" text class="grey--text subtitle-2 font-weight-black">LOGIN</v-btn>
-            <v-btn @click="$router.push({ name: 'register' })" text class="grey--text subtitle-2 font-weight-black">REGISTER</v-btn>
+            <v-btn v-if="!isAuth" @click="$router.push({ name: 'login' })" text class="grey--text subtitle-2 font-weight-black">LOGIN</v-btn>
+            <v-btn v-if="!isAuth" @click="$router.push({ name: 'register' })" text class="grey--text subtitle-2 font-weight-black">REGISTER</v-btn>
             <v-btn text class="grey--text subtitle-2 font-weight-black">WISHLIST</v-btn>
         </v-toolbar-items>    
     </v-toolbar>
@@ -41,5 +41,11 @@
             { icon: 'mdi-message-text', text: 'Menus', route: '/' },
             ]
         }),
+
+        computed: {
+            isAuth() {
+                return this.$store.getters.isAuthenticated
+            }
+        }
     }
 </script>
