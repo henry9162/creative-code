@@ -5,14 +5,14 @@
                     <v-col>
                         <v-card color="grey lighten-3" flat>
                             <v-card-title v-text="product.title" class="pt-0 title pl-0"></v-card-title>
-                            <zoom :img-normal="product.image"></zoom>
+                            <zoom :img-normal="product.image_front"></zoom>
                             <!-- <v-img :aspect-ratio="16/18" :src="product.image"></v-img> -->
                         </v-card>
                     </v-col>
                     <v-col>
                         <div>
                             <div class="text-right">
-                                <v-btn class="mb-3" small depressed dark color="orange darken-1">
+                                <v-btn @click="$router.push({ path: '/product/' + product.id })" class="mb-3" small depressed dark color="orange darken-1">
                                     More Details <v-icon small right>mdi-arrow-right</v-icon>
                                 </v-btn>
                             </div>
@@ -64,14 +64,14 @@
 
 <script>
 import zoom from '../ZoomOnHover'
+import cart from '../../mixins/Carts.js'
 
 export default {
-    props: [],
-
     components: { zoom },
 
+    mixins: [ cart ],
+
     data: () => ({
-        cartValue: 1,
         product: {},
         snackbar: false
     }),
@@ -81,20 +81,5 @@ export default {
             return ['grey lighten-3'];
         }
     },
-
-    methods: {
-        increaseCartItem(product){
-            this.cartValue < product.inventory ? this.cartValue++ : '' ;
-        },
-        decreaseCartItem(){
-            this.cartValue != 1 ? this.cartValue-- : this.cartValue = 1 ;
-        },
-        productDetails(event) {
-            this.product = event.params.product;
-        },
-        addToCart(product){
-            this.$emit('cartAdded', product);
-        }
-    }
 }
 </script>

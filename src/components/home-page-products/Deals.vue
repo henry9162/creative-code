@@ -27,7 +27,7 @@
                         <v-col v-for="product in deals" :key="product.id" md="3">
                             <v-hover v-slot:default="{ hover }">
                                 <v-card color="white" max-width="400" :elevation="hover ? 20 : 0">
-                                    <v-img :aspect-ratio="16/12" :src="product.image">
+                                    <v-img :aspect-ratio="16/12" :src="product.image_front">
                                         <v-expand-transition>
                                             <div v-if="hover"
                                                 class="d-flex transition-fast-in-fast-out darken-2 font-weight-bold v-card--reveal display-3 white--text"

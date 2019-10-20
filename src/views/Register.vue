@@ -1,9 +1,9 @@
 <template>
-    <div>
+    <div class="login-background">
         <v-container>
             <v-row>
                 <v-col class="d-flex justify-center">
-                    <v-card width="50%" class="px-12 pb-10 pt-6 my-5">
+                    <v-card elevation="24" width="50%" class="px-12 pb-10 pt-6 my-5">
                         <v-card-title class="d-flex justify-center mb-3 orange--text text--darken-2 font-weight-bold">REGISTER</v-card-title>
                         <v-card-text>
                             <v-row>
@@ -27,7 +27,7 @@
                                 </v-col>
                                 <v-col cols="6">
                                     <v-text-field 
-                                        prepend-inner-icon="mdi-account-card-details"
+                                        prepend-inner-icon="mdi-office"
                                         v-model="form.company_name" clearable
                                         :error-messages="companyNameErrors"
                                         @input="$v.form.company_name.$touch()"

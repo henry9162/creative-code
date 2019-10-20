@@ -21,6 +21,9 @@
                     <router-view></router-view> 
                 </transition> 
             </v-content>
+
+            <!-- Newsletter and Footer -->
+            <newsletter-footer />
         </div>
     </v-app>
 </template>
@@ -29,6 +32,7 @@
 import Systembar from './components/navigation/Systembar';
 import ApplicationBar from './components/navigation/ApplicationBar';
 import alerts from './mixins/Alerts.js'
+import newsletterFooter from './components/Footer'
 
 export default {
     name: 'App',
@@ -36,7 +40,7 @@ export default {
     mixins: [alerts],
 
     components: {
-        Systembar, ApplicationBar
+        Systembar, ApplicationBar, newsletterFooter
     },
 
     data: () => ({

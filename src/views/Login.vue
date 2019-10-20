@@ -1,9 +1,9 @@
 <template>
-    <div>
+    <div class="login-background">
         <v-container>
             <v-row>
                 <v-col class="d-flex justify-center">
-                    <v-card width="45%" class="px-12 pb-10 pt-6 my-5">
+                    <v-card elevation="24" width="45%" class="px-12 pb-10 pt-6 my-5">
                         <v-card-title class="d-flex justify-center mb-3 orange--text text--darken-2 font-weight-bold">LOGIN</v-card-title>
                         <v-card-text class="pb-0">
                             <v-row>
@@ -106,3 +106,11 @@ export default {
 
 }
 </script>
+
+<style lang="scss">
+    .login-background {
+        background: url('https://thumbs.dreamstime.com/z/tropical-background-palm-trees-branches-starfish-seashell-pink-travel-copy-space-139854756.jpg');
+        background-repeat: no-repeat;
+        background-size: contain
+    }
+</style>

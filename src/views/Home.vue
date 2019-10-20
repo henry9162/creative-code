@@ -56,20 +56,15 @@
             </v-row>
         </v-container>
 
-        <!-- Newsletter and Footer -->
-        <newsletter-footer />
-
-
     </div>
 </template>
 
 <script>
 import categories from '../components/home-page-products/Categories'
 import homeProductFilters from '../components/home-page-products/HomeProductFilters'
-import newsletterFooter from '../components/Footer'
 
 export default {
-    components: { categories, homeProductFilters, newsletterFooter},
+    components: { categories, homeProductFilters },
 
     data: () => ({
         slides: [
