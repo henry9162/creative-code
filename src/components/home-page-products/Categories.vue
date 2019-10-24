@@ -17,12 +17,13 @@
                     <v-row>
                         <v-col md="6">
                             <v-hover v-slot:default="{ hover }">
-                                <v-card height="200" :elevation="hover ? 15 : 2" href="#" flat>
-                                    <v-img :src="image2" width="100%" height="100%" position="up center"> 
+                                <v-card relative height="200" :elevation="hover ? 15 : 2" href="#" flat>
+                                    <v-img :src="image2" height="100%" position="up center"> 
                                         <v-btn absolute right bottom :class="hover ? 'd-block': 'd-none'" class="category-right-icon" fab light x-small>
                                             <v-icon>mdi-arrow-right</v-icon>
                                         </v-btn>    
                                     </v-img>
+                                    <div v-if="!hover" class="headline white--text font-weight-bold" style="position: absolute; top: 85px; left: 190px">LADIES</div>
                                 </v-card>
                             </v-hover>
                         </v-col>
@@ -34,6 +35,7 @@
                                             <v-icon>mdi-arrow-right</v-icon>
                                         </v-btn>  
                                     </v-img>
+                                    <div v-if="!hover" class="headline white--text font-weight-bold" style="position: absolute; top: 85px; left: 190px">MEN</div>
                                 </v-card>
                             </v-hover>
                         </v-col>
@@ -58,6 +60,7 @@
                                             <v-icon>mdi-arrow-right</v-icon>
                                         </v-btn>  
                                     </v-img>
+                                    <div v-if="!hover" class="headline white--text font-weight-bold" style="position: absolute; top: 85px; left: 190px">KIDS</div>
                                 </v-card> 
                             </v-hover>
                         </v-col>

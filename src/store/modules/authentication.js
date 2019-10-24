@@ -5,10 +5,6 @@ const state = {
     token: localStorage.getItem('token') || null,
     user: JSON.parse(localStorage.getItem('user')) || null,
     loader: false,
-    errors: {},
-    snackBar: true,
-    alertMessage: '',
-    alertColor: ''
 }
 
 const mutations = {
@@ -23,17 +19,6 @@ const mutations = {
     },
     deactivateLoder(state){
         state.loader = false;
-    },
-    displayServerError(state, errors){
-        state.errors = errors;
-    },
-    displayAlert(state, alertData){
-        state.snackBar = true;
-        state.alertMessage = alertData.message;
-        state.alertColor = alertData.color
-    },
-    hideAlert(state){
-        state.snackBar = false;
     },
     logout(state){
         state.token = null
@@ -56,11 +41,8 @@ const actions = {
                 })
                 .catch(error => {
                     context.commit('deactivateLoder');
-                    let errors = error.response.data.errors;
-                    console.log(errors);
-                    context.commit('displayServerError', errors);
                     context.commit('displayAlert', {
-                        message: 'Sorry, an error occured!',
+                        message: 'An error occured, please check your details and try again later!',
                         color: 'red'
                     });
                     reject(error);
@@ -121,11 +103,6 @@ const actions = {
             .catch(error => console.log(error.response.data.errors));
     },
 
-    tryAutoLogin(context){
-        
-
-    },
-
     deactivateSnackbar(context){
         context.commit('hideAlert');
     },
@@ -141,18 +118,6 @@ const getters = {
     },
     loader(state){
         return state.loader;
-    },
-    serverErrors(state){
-        return state.errors;
-    },
-    snackBar(state){
-        return state.snackBar;
-    },
-    alertMessage(state){
-        return state.alertMessage;
-    },
-    alertColor(state) {
-        return state.alertColor;
     }
 }
 

@@ -1,4 +1,4 @@
-export default [
+export default  [
     {
       id: 1,
       title: 'Faux Strelitzia Leaf Pair',
@@ -112,4 +112,11 @@ export default [
       date: '2019-09-13 11:18:26.817'
     }
   ]
-  
+
+  // export default {
+  //     getProducts(cb){
+  //         setTimeout(() => {
+  //             cb(_products);
+  //         }, 1000)
+  //     }
+  // }

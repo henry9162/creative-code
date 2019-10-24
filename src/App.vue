@@ -48,7 +48,9 @@ export default {
     }),
 
     created() {
+        this.$store.dispatch('getAllProducts');
         this.deactivateSnackbar();
+        this.$store.dispatch('persistCart');
     }
 };
 </script>

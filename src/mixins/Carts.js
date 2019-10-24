@@ -1,24 +1,28 @@
+import { mapGetters, mapActions } from "vuex";
+
 export default {
     data: () => ({
-        cartValue: 1,
         imageSelected: ''
     }),
 
+    computed: {
+        ...mapGetters({
+            quantity: 'quantity'
+        })
+    },
+
     methods: {
-        increaseCartItem(product){
-            this.cartValue < product.inventory ? this.cartValue++ : '' ;
-        },
-        decreaseCartItem(){
-            this.cartValue != 1 ? this.cartValue-- : this.cartValue = 1 ;
+        ...mapActions({
+            //addToCart: 'addTocart',
+            updateQuantity: 'updateQuantity',
+            addToCart: 'addToCart'
+        }),
+        selectImage(image){
+            this.imageSelected = image;
         },
         productDetails(event) {
             this.product = event.params.product;
+            this.imageSelected = event.params.product.image_front
         },
-        addToCart(product){
-            this.$emit('cartAdded', product);
-        },
-        selectImage(image){
-            this.imageSelected = image;
-        }
     }
 }

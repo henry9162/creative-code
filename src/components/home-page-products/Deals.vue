@@ -61,7 +61,7 @@
 
                                     <v-card-text class="pt-6" style="position: relative;">
                                         <v-hover v-slot:default="{ hover }">
-                                            <v-btn :elevation="hover ? 12 : 2" absolute :color="product.color" class="white--text" fab small right top>
+                                            <v-btn @click="addToCart({ productId: product.id, quantity: quantity, inventory: product.inventory })" :elevation="hover ? 12 : 2" absolute :color="product.color" class="white--text" fab small right top>
                                                 <v-icon>mdi-cart</v-icon>
                                             </v-btn>
                                         </v-hover>
@@ -103,22 +103,32 @@
 </template>
 
 <script>
-import productList from '../../api/products.js'
+import { mapActions, mapGetters } from 'vuex'
+import cart from '../../mixins/Carts.js'
 export default {
     data: () => ({
         show: false,
         productId: '',
     }),
 
+    mixins: [cart],
+
     computed: {
-        deals() { return productList.slice(0, 4); },
+        deals() { return this.$store.getters.products.slice(0, 4) }
     },
 
     methods: {
+        ...mapActions({
+            fetchProducts: 'getAllProducts',
+        }),
          toggleProductDropdown(id) {
             this.productId = id;
             this.show = !this.show;
         },
+    },
+
+    created() {
+        this.fetchProducts();
     }
 }
 </script>

@@ -89,12 +89,89 @@
                 <v-icon class="display-1">mdi-magnify</v-icon>
             </v-btn>
 
-            <v-btn icon class="mx-4">
-                <v-icon class="display-1">mdi-cart-remove</v-icon>
-            </v-btn>
+            <v-menu tile v-model="menu2" close-delay="200" max-width="380" :close-on-content-click="false" nudge-bottom="16" nudge-left="55" open-on-hover :nudge-width="400" offset-y>
+                <template v-slot:activator="{ on }">
+                    <v-btn icon class="mx-4" v-on="on">
+                        <v-badge v-if="cartItem" class="title" overlap color="red">
+                            <template class="cart-notification" v-slot:badge>
+                                <span dark v-text="cartItem"></span>
+                            </template>
+                            <v-icon class="display-1">mdi-cart-outline</v-icon>
+                        </v-badge>
+                    </v-btn>
+                </template>
+
+                <div class="menu-container">
+                    <div class="arrow-up"></div>
+                    <v-card tile class="mx-auto">
+                        <v-list class="pb-0">
+                            <v-list-item-group>
+                                <template v-for="(product, index) in cartProducts">
+                                    <v-list-item :key="product.title">
+                                        
+                                            <v-list-item-avatar class="mr-4" style="border-radius: 0px">
+                                                <v-img :aspect-ratio="16/9" :src="product.image_front"></v-img>
+                                            </v-list-item-avatar>
+                                    
+                                            <v-list-item-content>
+                                                <v-list-item-title class="subtitle-2 font-weight-regular blue--text text--darken-2" v-text="product.title"></v-list-item-title>
+                                                <v-list-item-subtitle class="caption pa-0 ma-0 grey--text text--darken-2 font-weight-thin">
+                                                    Quantity - x {{ product.quantity }}
+                                                </v-list-item-subtitle>
+                                                <!-- <v-list-item-subtitle class="caption pa-0 ma-0">Size - </v-list-item-subtitle> -->
+                                            </v-list-item-content>
+                                            <v-spacer></v-spacer>
+
+                                            <v-list-item-action> 
+                                                <v-list-item-title class="subtitle-2 green--text ml-4 font-weight-thin">
+                                                    <v-icon color="success" class="font-weight-thin" x-small right>mdi-currency-ngn</v-icon>{{ product.price }}
+                                                </v-list-item-title>
+                                            </v-list-item-action>
+
+                                            <v-list-item-action>
+                                                <v-icon @click="removeCartItem(product.id)" color="red">mdi-close</v-icon>
+                                            </v-list-item-action>
+                                        
+                                    </v-list-item>
+
+                                    <v-divider v-if="index <= cartProducts.length" :key="index"></v-divider>
+                                </template>
+                            </v-list-item-group>
+                        </v-list>
+
+                        <v-divider></v-divider>
+                        <v-list-item class="blue lighten-5">
+                            <template>
+                                <v-list-item-content></v-list-item-content>
+                                <v-list-item-action>
+                                    <v-list-item-title class="grey--text font-weight-bold">Total</v-list-item-title>
+                                </v-list-item-action>
+                                <v-list-item-action>
+                                    <v-list-item-title class="green--text">
+                                        <v-icon color="success" class="font-weight-thin" small right>mdi-currency-ngn</v-icon>{{ cartTotal }}
+                                    </v-list-item-title>
+                                </v-list-item-action>
+                            </template>
+                        </v-list-item>
+
+                        <v-divider></v-divider>
+                        <v-list-item class="blue lighten-3">
+                            <div class="d-flex justify-center py-6">
+                                <v-btn depressed tile dark class="mr-1">
+                                    <v-icon small>mdi-cart</v-icon> Show Cart
+                                </v-btn>
+                                <v-btn depressed tile dark color="success" class="ml-1">
+                                    <v-icon small>mdi-arrow-right</v-icon> Check Out
+                                </v-btn>
+                            </div>
+                        </v-list-item>
+                    </v-card>
+                </div>
+                
+            </v-menu>
 
             <div v-if="isAuth">
-                <v-menu v-model="menu2" close-delay="200" max-width="200" :close-on-content-click="false" nudge-bottom="13" nudge-left="55" open-on-hover :nudge-width="200" offset-y>
+                <v-menu v-model="userMenu" close-delay="200" max-width="200" :close-on-content-click="false" nudge-bottom="13" nudge-left="55" open-on-hover :nudge-width="200" offset-y>
                     <template v-slot:activator="{ on }">
                         <v-btn text dark style="height: 57px" v-on="on">
                             <v-avatar size="36">
@@ -169,10 +246,13 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
     data() {
         return {
             menu: false,
+            userMenu: false,
             menu2: false,
             drawer: null,
             categories: [ { title: 'MEN' }, { title: 'WOMEN'}, { title: 'KIDS'} ],
@@ -186,17 +266,25 @@ export default {
                 { action: 'school', title: 'Education', items: [ { title: 'List Item' } ] },
                 { action: 'directions_run', title: 'Family', items: [ { title: 'List Item' } ] },
                 { action: 'healing', title: 'Health', items: [ { title: 'List Item' } ] },
-            ],
+            ]
         }
     },
 
     computed: {
-        isAuth(){ return this.$store.getters.isAuthenticated },
-        user() { return this.$store.getters.loggedUser }
+        ...mapGetters({
+            isAuth: 'isAuthenticated',
+            user: 'loggedUser',
+            cartItem: 'numberOfCartItems',
+            cartProducts: 'cartProducts',
+            cartTotal: 'cartTotal'
+        })
     },
 
     methods: {
-        logout() { this.$store.dispatch('logout') }
+        ...mapActions({
+            logout: 'logout',
+            removeCartItem: 'removeCartItem'
+        })
     }
 }
 </script>
@@ -215,4 +303,21 @@ export default {
         background-position: center;
         background-size: cover;
     }
+    .cart-notification {
+        top: -15px;
+        right: -12px
+    }
+    // .menu-container {
+    //     position: relative;
+    //         .arrow-up {
+    //             width: 0; 
+    //             height: 0; 
+    //             border-left: 20px solid transparent;
+    //             border-right: 20px solid transparent;      
+    //             border-bottom: 10px solid rgba(231, 40, 77, 1);
+    //             position: absolute;
+    //             top: 20px;
+    //             // right: 25px;
+    //         }
+    // }
 </style>

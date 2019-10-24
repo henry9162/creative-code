@@ -1,13 +1,5 @@
 <template>
     <div>
-        <!-- SnackBar -->
-        <v-snackbar :timeout=2000 top right v-model="snackbar">
-            <span class="green--text">Success!..</span> You have added <span class="yellow--text mx-1" v-text="productModal.title"></span> to cart
-            <v-btn color="white" text @click="snackbar = false">
-                <v-icon>mdi-close-outline</v-icon>
-            </v-btn>
-        </v-snackbar>
-
         <!-- Filter Buttons -->
         <v-container fluid>
             <v-row class="mx-4">
@@ -83,7 +75,8 @@
 
                             <v-card-text class="pt-6" style="position: relative;">
                                 <v-hover v-slot:default="{ hover }">
-                                    <v-btn :elevation="hover ? 12 : 2" absolute :color="product.color" class="white--text" fab small right top>
+                                    <v-btn :elevation="hover ? 12 : 2" absolute :color="product.color" class="white--text" fab small right top
+                                        @click="addToCart({ productId: product.id, quantity: quantity, inventory: product.inventory })">
                                         <v-icon>mdi-cart</v-icon>
                                     </v-btn>
                                 </v-hover>
@@ -128,55 +121,52 @@
 </template>
 
 <script>
-import productList from '../../api/products.js'
 import productModal from './ProductModal'
 import deals from './Deals'
+import { mapState, mapGetters, mapActions } from 'vuex'
 
 export default {
     components: { productModal, deals },
 
     data: () => ({
-        active: 'Featured',
-        filters: [ { title:  'Featured'}, { title: 'Latest' }, { title: 'Women' }, { title: 'Men' }, { title: 'Kids' } ],
-        show: false,
-        productId: '',
+        active: 'Latest',
+        filters: [ { title:  'Latest'}, { title: 'Featured' }, { title: 'Women' }, { title: 'Men' }, { title: 'Kids' } ],
         products: [],
         snackbar: false,
-        productModal: {}
     }),
 
     computed: {
-        featured() { return productList.filter(product => product.featured == true); },
-        latest() { return productList.sort((a, b) => (a.date > b.date) ? -1 : 1); },
-        men() { return productList.filter(product => product.category == 'men'); },
-        women() { return productList.filter(product => product.category == 'women'); },
-        kids() { return productList.filter(product => product.category == 'kids'); },
+        ...mapGetters({
+            allProducts: 'products',
+            show: 'show',
+            productId: 'productId',
+            quantity: 'quantity'
+        }),
     },
 
     methods: {
-        toggleProductDropdown(id) {
-            this.productId = id;
-            this.show = !this.show;
-        },
+        ...mapActions({
+            toggleProductDropdown: 'toggleProductDropdown',
+            activateSnackbar: 'activateSnackbar',
+            addToCart: 'addToCart'
+        }),
+        
         filterButtons(filterTitle){
             this.active = filterTitle.title;
             this.selectFilter(filterTitle.title);
         },
+
         selectFilter(title){
-            if (title == 'Featured') this.products = this.featured;
-            if (title == 'Latest') this.products = this.latest;
-            if (title == 'Men') this.products = this.men;
-            if (title == 'Women') this.products = this.women;
-            if (title == 'Kids') this.products = this.kids;
+            if (title == 'Latest') this.products = this.allProducts.sort((a, b) => (a.date > b.date) ? -1 : 1);
+            if (title == 'Featured') this.products = this.allProducts.filter(product => product.featured == true);
+            if (title == 'Men') this.products = this.allProducts.filter(product => product.category == 'men');
+            if (title == 'Women') this.products = this.allProducts.filter(product => product.category == 'women');
+            if (title == 'Kids') this.products = this.allProducts.filter(product => product.category == 'kids');
         },
-        activateSnackbar(product){
-            this.snackbar = true;
-            this.productModal = product;
-        }
     },
 
     created() {
-        this.products = this.featured;
+        this.selectFilter('Latest');
     }
 }
 </script>

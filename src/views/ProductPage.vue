@@ -1,9 +1,11 @@
 <template>
     <div>
+        <!-- Breadcrumbs -->
         <div class="d-flex justify-center">
             <v-breadcrumbs class="pa-2" :items="items" small></v-breadcrumbs>
         </div>
 
+        <!-- Product title parallax -->
         <div>
             <v-parallax height="85" dark src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg">
                 <v-row align="center" justify="center">
@@ -15,8 +17,11 @@
             </v-parallax>
         </div>
 
+        <!-- Product Details -->
         <v-container class="pt-0" fluid>
             <v-row class="mx-1">
+
+                <!-- Image Side Views section -->
                 <v-col class="px-0" md="1">
                     <div>
                         <v-card @click="selectImage(selectedProduct.image_front)" tile flat max-width="100" color="white">
@@ -33,21 +38,23 @@
                     </div>
                 </v-col>
 
+                <!-- Zoomable Image -->
                 <v-col md="4">
                     <v-card tile color="white" flat>
                         <zoom :img-normal="imageSelected" :scale="2"></zoom>
                     </v-card>
                 </v-col>
 
+                <!-- Product Description And Specification -->
                 <v-col md="7">
                     <v-card class="mb-3" color="transparent" flat>
                         <div class="d-flex">
                             <div class="pl-2">
-                                <v-icon style="font-size: 70px" color="green">mdi-truck-fast</v-icon>
+                                <v-icon style="font-size: 50px" color="green">mdi-truck-fast</v-icon>
                             </div>
-                            <div class="pl-3 pt-2">
-                                <h4>This product qualifies for free shipping</h4>
-                                <p class="subtitle-2 text--grey font-weight-regular">
+                            <div class="pl-3 pt-0">
+                                <h5>This product qualifies for free shipping</h5>
+                                <p class="caption text--grey font-weight-regular">
                                     This block is set to appear automatically on products above a certain price, 
                                     which may qualify for free shipping or other perks.
                                 </p>
@@ -56,7 +63,7 @@
                     </v-card>
 
                     <v-card class="mt-5" flat>
-                        <v-tabs v-model="tab" grow background-color="success" centered dark icons-and-text>
+                        <v-tabs v-model="tab" grow background-color="blue" centered dark icons-and-text>
                             <v-tabs-slider></v-tabs-slider>
 
                             <v-tab href="#tab-1"> Description <v-icon>mdi-information-outline</v-icon></v-tab>
@@ -108,25 +115,25 @@
                             </v-card-text>
 
                             <v-card-text class="text-center mt-2 green--text font-weight-black display-2">
-                                <v-icon color="success" x-large right>mdi-currency-ngn</v-icon>{{ selectedProduct.price * cartValue }}
+                                <v-icon color="success" x-large right>mdi-currency-ngn</v-icon>{{ selectedProduct.price * quantity }}
                             </v-card-text>
                         </div>
                     </v-card>
 
                     <div class="mt-10 d-flex justify-space-between">
                         <div class="d-flex">
-                            <v-btn tile @click="decreaseCartItem" color="blue darken-3" class="my-0 mt-4" dark x-small depressed>
+                            <v-btn tile @click="updateQuantity({ product: selectedProduct, type: 'decrease' })" color="blue darken-3" class="my-0 mt-4" dark x-small depressed>
                                 <v-icon x-small>mdi-minus</v-icon>
                             </v-btn>
 
-                            <v-text-field dense flat solo v-model="cartValue"></v-text-field>
+                            <v-text-field dense flat solo v-model="quantity"></v-text-field>
 
-                            <v-btn @click="increaseCartItem(selectedProduct)" tile color="blue darken-3 mt-0" class="my-0 mt-4" dark x-small depressed>
+                            <v-btn @click="updateQuantity({ product: selectedProduct, type: 'increase' })" tile color="blue darken-3 mt-0" class="my-0 mt-4" dark x-small depressed>
                                 <v-icon x-small>mdi-plus</v-icon>
                             </v-btn>
                         </div>
                 
-                        <v-btn tile @click="addToCart(selectedProduct)" class="ml-6 mt-1" large depressed color="primary" dark>
+                        <v-btn @click="addToCart({ productId: selectedProduct.id, quantity: quantity })" tile class="ml-6 mt-1" large depressed color="primary" dark>
                             <v-icon left>mdi-cart-arrow-down</v-icon> Add to Cart
                         </v-btn>
 
@@ -148,6 +155,7 @@
 import productList from '../api/products.js'
 import zoom from '../components/ZoomOnHover'
 import cart from '../mixins/Carts.js'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
     components: { zoom },
@@ -156,7 +164,6 @@ export default {
 
     data: () => ({
         selectedProduct: {},
-        imageSelected: '',
         items: [
             {
                 text: 'Dashboard',
@@ -176,12 +183,6 @@ export default {
         ],
         tab: null
     }),
-
-    methods: {
-        selectImage(image){
-            this.imageSelected = image;
-        }
-    },
 
     created() {
         let products = productList.filter(product => product.id == this.$route.params.productId);

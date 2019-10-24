@@ -93,8 +93,8 @@ export default {
          clip-path: polygon(50% 0%, 100% 0, 100% 35%, 100% 100%, 76% 93%, 53% 100%, 29% 92%, 0 100%, 0% 35%, 0 0);
     }
     .category-right-icon {
-        margin-bottom: 5.6rem; 
-        margin-right: 10rem
+        margin-bottom: 5.7rem; 
+        margin-right: 11rem
     }
     .filter-products {
         background: #fff;
