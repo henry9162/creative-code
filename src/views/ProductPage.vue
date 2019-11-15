@@ -2,16 +2,18 @@
     <div>
         <!-- Breadcrumbs -->
         <div class="d-flex justify-center">
-            <v-breadcrumbs class="pa-2" :items="items" small></v-breadcrumbs>
+            <v-breadcrumbs class="pa-4" :items="items" small></v-breadcrumbs>
         </div>
 
         <!-- Product title parallax -->
         <div>
-            <v-parallax height="85" dark src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg">
+            <v-parallax height="100" dark src="https://ak7.picdn.net/shutterstock/videos/15834727/thumb/1.jpg">
                 <v-row align="center" justify="center">
                     <div>
-                        <h2 class="display-1 mb-2" v-text="selectedProduct.title"></h2>
-                        <v-divider class="mx-12 font-weight-black white"></v-divider>
+                        <h2 class="headline grey--text text--darken-4 mb-3 font-weight-bold text-uppercase" v-text="selectedProduct.title"></h2>
+                        <div class="d-flex justify-center">
+                            <hr style="width: 30%" class="red font-weight-black">
+                        </div>
                     </div>
                 </v-row>
             </v-parallax>
@@ -63,14 +65,14 @@
                     </v-card>
 
                     <v-card class="mt-5" flat>
-                        <v-tabs v-model="tab" grow background-color="blue" centered dark icons-and-text>
+                        <v-tabs v-model="tab" grow background-color="#313846" centered dark>
                             <v-tabs-slider></v-tabs-slider>
 
-                            <v-tab href="#tab-1"> Description <v-icon>mdi-information-outline</v-icon></v-tab>
+                            <v-tab href="#tab-1"> Description</v-tab>
 
-                            <v-tab href="#tab-2"> Specification <v-icon>mdi-details</v-icon></v-tab>
+                            <v-tab href="#tab-2"> Specification</v-tab>
 
-                            <v-tab href="#tab-3"> Review <v-icon>mdi-star</v-icon></v-tab>
+                            <v-tab href="#tab-3"> Review</v-tab>
                         </v-tabs>
 
                         <v-tabs-items v-model="tab">
@@ -137,11 +139,11 @@
                             <v-icon left>mdi-cart-arrow-down</v-icon> Add to Cart
                         </v-btn>
 
-                        <v-btn tile class="ml-6 mt-1" large depressed color="success" dark>
+                        <v-btn @click="$router.push({ name: 'checkout' })" tile class="ml-6 mt-1" large depressed color="success" dark>
                             <v-icon left>mdi-currency-ngn</v-icon> Buy Now
                         </v-btn>
 
-                        <v-btn tile class="ml-6 mt-1" large depressed color="red" dark>
+                        <v-btn tile class="ml-6 mt-1" large depressed color="orange" dark>
                             <v-icon left>mdi-email-outline</v-icon> Ask Question
                         </v-btn>
                     </div>

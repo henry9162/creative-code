@@ -13,7 +13,6 @@ export default {
 
     methods: {
         ...mapActions({
-            //addToCart: 'addTocart',
             updateQuantity: 'updateQuantity',
             addToCart: 'addToCart'
         }),

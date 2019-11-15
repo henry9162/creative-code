@@ -4,6 +4,9 @@ import Home from './views/Home'
 import Register from './views/Register'
 import Login from './views/Login'
 import productPage from './views/ProductPage'
+import cart from './views/ShowCart'
+import checkout from './views/CheckOut'
+import allProduct from './views/AllProduct'
 
 Vue.use(Router)
 
@@ -39,6 +42,21 @@ export default new Router({
       path: '/product/:productId',
       name: 'product-page',
       component: productPage
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      component: cart
+    },
+    {
+      path: '/checkout',
+      name: 'checkout',
+      component: checkout
+    },
+    {
+      path: '/all-product',
+      name: 'allProduct',
+      component: allProduct
     },
     // {
     //   path: '/about',

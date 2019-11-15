@@ -1,9 +1,9 @@
 <template>
     <div class="">
-        <v-app-bar absolute height="80" app dark color="#313846">
+        <v-app-bar absolute height="65" app dark color="#313846">
             <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="grey--text"></v-app-bar-nav-icon>
 
-            <v-toolbar-title class="display-1 text-uppercase">
+            <v-toolbar-title class="text-uppercase">
                 <v-hover v-slot:default="{ hover }">
                     <router-link to="/" tag="span" :class="hover ? 'hover-cursor':''" class="font-weight-bold text-uppercase">Ecommerce Logo</router-link>
                 </v-hover>
@@ -13,7 +13,7 @@
 
             <v-menu v-model="menu" close-delay="200" max-width="900" :close-on-content-click="false" nudge-bottom="20" nudge-left="320" open-on-hover :nudge-width="200" offset-y>
                 <template v-slot:activator="{ on }">
-                  <v-btn text dark style="height: 57px" v-on="on" class="font-weight-bold title font-italic">All Categories</v-btn>
+                  <v-btn text dark style="height: 57px" v-on="on" class="font-weight-bold title">All Categories</v-btn>
                 </template>
 
                 <v-card>
@@ -92,8 +92,8 @@
             <v-menu tile v-model="menu2" close-delay="200" max-width="380" :close-on-content-click="false" nudge-bottom="16" nudge-left="55" open-on-hover :nudge-width="400" offset-y>
                 <template v-slot:activator="{ on }">
                     <v-btn icon class="mx-4" v-on="on">
-                        <v-badge v-if="cartItem" class="title" overlap color="red">
-                            <template class="cart-notification" v-slot:badge>
+                        <v-badge class="title" overlap color="red">
+                            <template v-if="cartItem" class="cart-notification" v-slot:badge>
                                 <span dark v-text="cartItem"></span>
                             </template>
                             <v-icon class="display-1">mdi-cart-outline</v-icon>
@@ -101,7 +101,7 @@
                     </v-btn>
                 </template>
 
-                <div class="menu-container">
+                <div v-if="cartItem" class="menu-container">
                     <div class="arrow-up"></div>
                     <v-card tile class="mx-auto">
                         <v-list class="pb-0">
@@ -115,7 +115,7 @@
                                     
                                             <v-list-item-content>
                                                 <v-list-item-title class="subtitle-2 font-weight-regular blue--text text--darken-2" v-text="product.title"></v-list-item-title>
-                                                <v-list-item-subtitle class="caption pa-0 ma-0 grey--text text--darken-2 font-weight-thin">
+                                                <v-list-item-subtitle class="caption pa-0 ma-0 grey--text text--darken-2 font-weight-regular">
                                                     Quantity - x {{ product.quantity }}
                                                 </v-list-item-subtitle>
                                                 <!-- <v-list-item-subtitle class="caption pa-0 ma-0">Size - </v-list-item-subtitle> -->
@@ -140,6 +140,7 @@
                         </v-list>
 
                         <v-divider></v-divider>
+
                         <v-list-item class="blue lighten-5">
                             <template>
                                 <v-list-item-content></v-list-item-content>
@@ -156,18 +157,19 @@
 
                         <v-divider></v-divider>
                         <v-list-item class="blue lighten-3">
-                            <div class="d-flex justify-center py-6">
-                                <v-btn depressed tile dark class="mr-1">
+                            <div class="d-flex justify-center py-4">
+                                <v-btn @click="$router.push({ name: 'cart' })" depressed tile dark class="mr-1">
                                     <v-icon small>mdi-cart</v-icon> Show Cart
                                 </v-btn>
-                                <v-btn depressed tile dark color="success" class="ml-1">
-                                    <v-icon small>mdi-arrow-right</v-icon> Check Out
+                                <v-btn @click="$router.push({ name: 'checkout' })" depressed tile dark color="success" class="ml-1">
+                                    Check Out <v-icon small right>mdi-arrow-right</v-icon>
                                 </v-btn>
                             </div>
                         </v-list-item>
                     </v-card>
                 </div>
-                
+
+                <div v-else class="pa-4 white red--text font-weight-bold">You have no item in cart</div>
             </v-menu>
 
             <div v-if="isAuth">
@@ -209,8 +211,7 @@
                         </v-list>
                     </v-card>
                 </v-menu>
-            </div>
-            
+            </div>   
         </v-app-bar>
 
         <v-navigation-drawer v-model="drawer" absolute temporary>
@@ -307,17 +308,4 @@ export default {
         top: -15px;
         right: -12px
     }
-    // .menu-container {
-    //     position: relative;
-    //         .arrow-up {
-    //             width: 0; 
-    //             height: 0; 
-    //             border-left: 20px solid transparent;
-    //             border-right: 20px solid transparent;      
-    //             border-bottom: 10px solid rgba(231, 40, 77, 1);
-    //             position: absolute;
-    //             top: 20px;
-    //             // right: 25px;
-    //         }
-    // }
 </style>

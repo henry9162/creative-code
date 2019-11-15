@@ -1,45 +1,13 @@
 <template>
     <div>
-        <!-- Filter Buttons -->
-        <v-container fluid>
-            <v-row class="mx-4">
-                <v-col>
-                    <div class="filter-products">
-                        <div class="filters" >
-                            <v-hover v-for="(filter, i) in filters" :key="i" v-slot:default="{ hover }">
-                                <v-btn tile height="60" @click="filterButtons(filter)" x-large :class="hover || active == filter.title ? 'white--text' : 'border grey--text text--darken-3'" :color="hover || active == filter.title ? 'rgba(231, 40, 77, 1)' : ''" depressed light>
-                                    <span class="font-weight-black" v-text="filter.title"></span>
-                                    <div :class="active == filter.title ? 'arrow-down' : ''"></div>
-                                </v-btn>
-                            </v-hover>
-                        </div>
-                        <div class="all-categories-filter">
-                            <v-hover v-slot:default="{ hover }">
-                                <v-btn @click="$router.push({ name: 'allProduct' })" tile height="60" x-large :class="hover ? 'white--text' : 'border grey--text text--darken-3'" :color="hover ? 'rgba(231, 40, 77, 1)' : ''" depressed>
-                                    <span>
-                                        <v-btn depressed class="mr-2" max-width="20" height="20" :color="hover ? '#fff' : 'rgba(231, 40, 77, 1)'" fab x-small dark>
-                                            <v-icon :class="hover ? 'red--text' : ''" x-small>mdi-arrow-right</v-icon>
-                                        </v-btn>    
-                                    </span> 
-                                    <span class="font-weight-black">
-                                        See All Products
-                                    </span>
-                                </v-btn>
-                            </v-hover>
-                        </div>
-                    </div>
-                </v-col>
-            </v-row>
-        </v-container>
-
         <!-- Product Cards -->
-        <product-modal @cartAdded="activateSnackbar"></product-modal>
+        <!-- <product-modal @cartAdded="activateSnackbar"></product-modal> -->
 
         <v-container class="pt-0" fluid>
-            <v-row class="mx-4">
-                <v-col v-for="product in products" :key="product.id" md="3">
+            <v-row>
+                <v-col v-for="product in products" :key="product.id" md="4">
                     <v-hover v-slot:default="{ hover }">
-                        <v-card color="white" max-width="400" :elevation="hover ? 20 : 1">
+                        <v-card flat color="white" max-width="400" :elevation="hover ? 20 : ''">
                             <v-img :aspect-ratio="16/12" :src="product.image_front">
                                 <v-expand-transition>
                                     <div v-if="hover"
@@ -114,25 +82,15 @@
                 </v-col>
             </v-row>
         </v-container>
-
-        <deals />
-
     </div>
 </template>
 
 <script>
-import productModal from './ProductModal'
-import deals from './Deals'
-import { mapState, mapGetters, mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
-    components: { productModal, deals },
-
     data: () => ({
-        active: 'Latest',
-        filters: [ { title:  'Latest'}, { title: 'Featured' }, { title: 'Women' }, { title: 'Men' }, { title: 'Kids' } ],
-        products: [],
-        snackbar: false,
+        products: []
     }),
 
     computed: {
@@ -140,33 +98,21 @@ export default {
             allProducts: 'products',
             show: 'show',
             productId: 'productId',
-            quantity: 'quantity'
+            quantity: 'quantity',
         }),
     },
 
     methods: {
         ...mapActions({
             toggleProductDropdown: 'toggleProductDropdown',
-            activateSnackbar: 'activateSnackbar',
-            addToCart: 'addToCart'
+            // activateSnackbar: 'activateSnackbar',
+            addToCart: 'addToCart',
         }),
-        
-        filterButtons(filterTitle){
-            this.active = filterTitle.title;
-            this.selectFilter(filterTitle.title);
-        },
-
-        selectFilter(title){
-            if (title == 'Latest') this.products = this.allProducts.sort((a, b) => (a.date > b.date) ? -1 : 1);
-            if (title == 'Featured') this.products = this.allProducts.filter(product => product.featured == true);
-            if (title == 'Men') this.products = this.allProducts.filter(product => product.category == 'men');
-            if (title == 'Women') this.products = this.allProducts.filter(product => product.category == 'women');
-            if (title == 'Kids') this.products = this.allProducts.filter(product => product.category == 'kids');
-        },
     },
 
     created() {
-        this.selectFilter('Latest');
+        this.products = this.allProducts.sort((a, b) => (a.date > b.date) ? -1 : 1);
     }
+
 }
 </script>

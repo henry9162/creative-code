@@ -6,7 +6,7 @@ export default {
         },
 
         alertMessage() { return this.$store.getters.alertMessage },
-        color() { return this.$store.getters.alertColor }
+        color() { return this.$store.getters.alertColor },
     },
 
     methods: {

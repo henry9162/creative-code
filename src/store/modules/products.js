@@ -44,9 +44,11 @@ const actions = {
     },
     persistCart(context) {
         let storedCartItem = JSON.parse(localStorage.getItem('cartItem'));
-        storedCartItem.forEach(cartItem => {
-            context.commit('addToCart', cartItem);
-        })
+        if (storedCartItem) {
+            storedCartItem.forEach(cartItem => {
+                context.commit('addToCart', cartItem);
+            })
+        }
     },
     addToCart(context, cartItemData) {
         let cartItem = context.state.cart.find(cartItem => cartItem.productId == cartItemData.productId);
@@ -106,9 +108,11 @@ const getters = {
 
     cartTotal(state, getters) {
         let total = 0
-        getters.cartProducts.forEach(product => {
-            total = total + product.price * product.quantity
-        });
+        if (getters.cartProducts){
+            getters.cartProducts.forEach(product => {
+                total = total + product.price * product.quantity
+            });
+        }
         return total;
     }
 }
