@@ -75,7 +75,7 @@
 
                             <v-card-text class="pt-6" style="position: relative;">
                                 <v-hover v-slot:default="{ hover }">
-                                    <v-btn :elevation="hover ? 12 : 2" absolute :color="product.color" class="white--text" fab small right top
+                                    <v-btn :elevation="hover ? 12 : 2" absolute :color="product.color.name" class="white--text" fab small right top
                                         @click="addToCart({ productId: product.id, quantity: quantity, inventory: product.inventory })">
                                         <v-icon>mdi-cart</v-icon>
                                     </v-btn>

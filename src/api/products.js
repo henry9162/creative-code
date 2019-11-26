@@ -3,9 +3,46 @@ export default  [
       id: 1,
       title: 'Faux Strelitzia Leaf Pair',
       price: 100.00,
-      category: 'men',
+      category: {
+          id: 1,
+          name: 'Men',
+          subcategories: [
+              {
+                  id: 1,
+                  name: 'Agbada'
+              },
+              {
+                  id: 2,
+                  name: 'Dansiki'
+              },
+              {
+                  id: 3,
+                  name: 'Senator'
+              }
+          ]
+      },
+      size: {
+          id: 1,
+          name: 'XS',
+      },
+      material: {
+          id: 1,
+          name: 'Ankara'
+      },
+      style: {
+          id: 1,
+          name: 'Party'
+      },
       featured: true,
-      color: 'blue',
+      color: {
+          id: 1,
+          name: 'blue',
+      },
+      brand: {
+          id: 1,
+          name: 'Bree Design',
+          logo: 'https://www.designhill.com/design-blog/wp-content/uploads/2019/04/13-1.jpg'
+      },
       image_front: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
       image_back: 'https://us.123rf.com/450wm/subbotina/subbotina1703/subbotina170300097/74168363-beauty-fashion-brunette-model-girl-with-perfect-makeup-trendy-accessories-and-fashion-wear.jpg?ver=6',
       image_side: 'https://us.123rf.com/450wm/prometeus/prometeus1306/prometeus130600071/20104714-close-up-art-fashion-photo-of-a-gorgeous-woman-in-paper-dress-black-and-white-.jpg?ver=6',
@@ -17,9 +54,46 @@ export default  [
       id: 2,
       title: 'Rohini Daybed',
       price: 1119.99,
-      category: 'women',
+      category: {
+          id: 2,
+          name: 'Women',
+          subcategories: [
+              {
+                  id: 1,
+                  name: 'Bridal'
+              },
+              {
+                  id: 2,
+                  name: 'Gown'
+              },
+              {
+                  id: 3,
+                  name: 'Skirt'
+              }
+          ]
+      },
+      size: {
+          id: 2,
+          name: 'S',
+      },
+      material: {
+          id: 2,
+          name: 'Lace'
+      },
+      style: {
+          id: 2,
+          name: 'Daytime'
+      },
       featured: false,
-      color: 'orange',
+      color: {
+          id: 2,
+          name: 'red',
+      },
+      brand: {
+          id: 2,
+          name: 'Polo',
+          logo: 'https://static.highsnobiety.com/thumbor/VzQzzResPvsGe5TbQ9tdkpuxyNc=/fit-in/1350x810/smart/static.highsnobiety.com/wp-content/uploads/2014/04/the-inspirations-behind-20-of-the-most-well-known-logos-in-high-fashion-19.jpg'
+      },
       image_front: 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fcdn-img.instyle.com%2Fsites%2Fdefault%2Ffiles%2Fstyles%2F640x768%2Fpublic%2Fimages%2F2019%2F09%2Fgettyimages-1176442580.jpg%3Fitok%3DwojQvxRw&w=450&c=sc&poi=face&q=85',
       image_back: 'https://us.123rf.com/450wm/subbotina/subbotina1703/subbotina170300097/74168363-beauty-fashion-brunette-model-girl-with-perfect-makeup-trendy-accessories-and-fashion-wear.jpg?ver=6',
       image_side: 'https://us.123rf.com/450wm/prometeus/prometeus1306/prometeus130600071/20104714-close-up-art-fashion-photo-of-a-gorgeous-woman-in-paper-dress-black-and-white-.jpg?ver=6',
@@ -31,9 +105,50 @@ export default  [
       id: 3,
       title: 'Marte Basket Table',
       price: 179.99,
-      category: 'kids',
+      category: {
+          id: 3,
+          name: 'Kids',
+          subcategories: [
+              {
+                  id: 1,
+                  name: 'Agbada'
+              },
+              {
+                  id: 2,
+                  name: 'Gown'
+              },
+              {
+                  id: 3,
+                  name: 'Senator'
+              },
+              {
+                  id: 4,
+                  name: 'Dansiki'
+              }
+          ]
+      },
+      size: {
+          id: 3,
+          name: 'M',
+      },
+      material: {
+          id: 3,
+          name: 'Shifon'
+      },
+      style: {
+          id: 3,
+          name: 'Beachwear'
+      },
       featured: true,
-      color: 'brown',
+      color: {
+          id: 3,
+          name: 'orange',
+      },
+      brand: {
+          id: 3,
+          name: 'Brand',
+          logo: 'https://www.logoground.com/uploads/201547762015-12-254948971polo.jpg'
+      },
       image_front: 'https://raffles.edu.my/wp-content/uploads/2018/05/image-fashion-business-1200x628-1170x628.jpg',
       image_back: 'https://us.123rf.com/450wm/subbotina/subbotina1703/subbotina170300097/74168363-beauty-fashion-brunette-model-girl-with-perfect-makeup-trendy-accessories-and-fashion-wear.jpg?ver=6',
       image_side: 'https://us.123rf.com/450wm/prometeus/prometeus1306/prometeus130600071/20104714-close-up-art-fashion-photo-of-a-gorgeous-woman-in-paper-dress-black-and-white-.jpg?ver=6',
@@ -45,9 +160,46 @@ export default  [
       id: 4,
       title: 'Modular Velvet Sofa',
       price: 549.00,
-      category: 'women',
+      category: {
+          id: 2,
+          name: 'Women',
+          subcategories: [
+              {
+                  id: 1,
+                  name: 'Bridal'
+              },
+              {
+                  id: 2,
+                  name: 'Gown'
+              },
+              {
+                  id: 3,
+                  name: 'Skirt'
+              }
+          ]
+      },
+      size: {
+          id: 4,
+          name: 'L',
+      },
+      material: {
+          id: 4,
+          name: 'George'
+      },
+      style: {
+          id: 4,
+          name: 'Office'
+      },
       featured: false,
-      color: 'pink',
+      color: {
+          id: 4,
+          name: 'pink',
+      },
+      brand: {
+          id: 4,
+          name: 'Ralph And Lauren',
+          logo: 'https://www.logoground.com/uploads/201547762015-12-254948971polo.jpg'
+      },
       image_front: 'https://www.hellomagazine.com/imagenes/fashion/2019100478650/denim-jacket-puff-sleeves-river-island-back-in-stock/0-380-268/river-island-denim-jacekt-t.jpg',
       image_back: 'https://us.123rf.com/450wm/subbotina/subbotina1703/subbotina170300097/74168363-beauty-fashion-brunette-model-girl-with-perfect-makeup-trendy-accessories-and-fashion-wear.jpg?ver=6',
       image_side: 'https://us.123rf.com/450wm/prometeus/prometeus1306/prometeus130600071/20104714-close-up-art-fashion-photo-of-a-gorgeous-woman-in-paper-dress-black-and-white-.jpg?ver=6',
@@ -59,9 +211,46 @@ export default  [
       id: 5,
       title: 'Vinyl Record Storage Set',
       price: 29.99,
-      category: 'men',
-      color: 'yellow',
+      category: {
+          id: 1,
+          name: 'Men',
+          subcategories: [
+              {
+                  id: 1,
+                  name: 'Agbada'
+              },
+              {
+                  id: 2,
+                  name: 'Dansiki'
+              },
+              {
+                  id: 3,
+                  name: 'Senator'
+              }
+          ]
+      },
+      size: {
+          id: 5,
+          name: 'XL',
+      },
+      material: {
+          id: 4,
+          name: 'George'
+      },
+      style: {
+          id: 4,
+          name: 'Office'
+      },
+      color: {
+          id: 5,
+          name: 'grey',
+      },
       featured: true,
+      brand: {
+          id: 5,
+          name: 'GXRL',
+          logo: 'https://www.logodesignguru.com/images/industry-logos/fashion-08.png'
+      },
       image_front: 'https://media.istockphoto.com/photos/fashionable-female-blond-model-dancing-having-fun-picture-id925356864?k=6&m=925356864&s=612x612&w=0&h=_AmybRUco8GCo5MkxxlIy160vurAEZr9qD3WqZlyH4U=',
       image_back: 'https://us.123rf.com/450wm/subbotina/subbotina1703/subbotina170300097/74168363-beauty-fashion-brunette-model-girl-with-perfect-makeup-trendy-accessories-and-fashion-wear.jpg?ver=6',
       image_side: 'https://us.123rf.com/450wm/prometeus/prometeus1306/prometeus130600071/20104714-close-up-art-fashion-photo-of-a-gorgeous-woman-in-paper-dress-black-and-white-.jpg?ver=6',
@@ -73,9 +262,46 @@ export default  [
       id: 6,
       title: '10" Marble Planter',
       price: 58.99,
-      category: 'men',
-      color: 'orange',
+      category: {
+          id: 1,
+          name: 'Men',
+          subcategories: [
+              {
+                  id: 1,
+                  name: 'Agbada'
+              },
+              {
+                  id: 2,
+                  name: 'Dansiki'
+              },
+              {
+                  id: 3,
+                  name: 'Senator'
+              }
+          ]
+      },
+      size: {
+          id: 5,
+          name: 'XL',
+      },
+      material: {
+          id: 3,
+          name: 'Shifon'
+      },
+      style: {
+          id: 3,
+          name: 'Beachwear'
+      },
+      color: {
+          id: 6,
+          name: 'black',
+      },
       featured: true,
+      brand: {
+          id: 6,
+          name: 'Prodigy',
+          logo: 'https://www.designhill.com/resize_img.php?atyp=page_file&pth=ft_ca_sl2||115||bannerslider_4&flp=1554118157-17472852945ca1f60dcd6d05-97250065.jpg'
+      },
       image_front: 'https://media.monsoon.co.uk/medias/sys_master/9466489503774.jpg?buildNumber=5b3c63442ae1c2b9853aceaecd154c50a4b3311a',
       image_back: 'https://us.123rf.com/450wm/subbotina/subbotina1703/subbotina170300097/74168363-beauty-fashion-brunette-model-girl-with-perfect-makeup-trendy-accessories-and-fashion-wear.jpg?ver=6',
       image_side: 'https://us.123rf.com/450wm/prometeus/prometeus1306/prometeus130600071/20104714-close-up-art-fashion-photo-of-a-gorgeous-woman-in-paper-dress-black-and-white-.jpg?ver=6',
@@ -87,9 +313,46 @@ export default  [
       id: 7,
       title: 'Desert Moonflower Credenza',
       price: 998.00,
-      category: 'men',
+      category: {
+          id: 2,
+          name: 'Women',
+          subcategories: [
+              {
+                  id: 1,
+                  name: 'Bridal'
+              },
+              {
+                  id: 2,
+                  name: 'Gown'
+              },
+              {
+                  id: 3,
+                  name: 'Skirt'
+              }
+          ]
+      },
+      size: {
+          id: 5,
+          name: 'XL',
+      },
+      material: {
+          id: 2,
+          name: 'Lace'
+      },
+      style: {
+          id: 2,
+          name: 'Daytime'
+      },
       featured: true,
-      color: 'blue',
+      color: {
+          id: 6,
+          name: 'black',
+      },
+      brand: {
+          id: 6,
+          name: 'Prodigy',
+          logo: 'https://www.designhill.com/resize_img.php?atyp=page_file&pth=ft_ca_sl2||115||bannerslider_4&flp=1554118157-17472852945ca1f60dcd6d05-97250065.jpg'
+      },
       image_front: 'https://www.fashiontofigure.com/crsdocroot/images/FTF/Flyouts/TOPS/09112019_Tops.jpg',
       image_back: 'https://us.123rf.com/450wm/subbotina/subbotina1703/subbotina170300097/74168363-beauty-fashion-brunette-model-girl-with-perfect-makeup-trendy-accessories-and-fashion-wear.jpg?ver=6',
       image_side: 'https://us.123rf.com/450wm/prometeus/prometeus1306/prometeus130600071/20104714-close-up-art-fashion-photo-of-a-gorgeous-woman-in-paper-dress-black-and-white-.jpg?ver=6',
@@ -101,9 +364,50 @@ export default  [
       id: 8,
       title: 'Leni Leaning Mirror',
       price: 139.90,
-      category: 'women',
+      category: {
+          id: 3,
+          name: 'Kids',
+          subcategories: [
+              {
+                  id: 1,
+                  name: 'Agbada'
+              },
+              {
+                  id: 2,
+                  name: 'Gown'
+              },
+              {
+                  id: 3,
+                  name: 'Senator'
+              },
+              {
+                  id: 4,
+                  name: 'Dansiki'
+              }
+          ]
+      },
+      size: {
+          id: 4,
+          name: 'L',
+      },
+      material: {
+          id: 1,
+          name: 'Ankara'
+      },
+      style: {
+          id: 1,
+          name: 'Party'
+      },
       featured: false,
-      color: 'orange',
+      color: {
+          id: 3,
+          name: 'orange',
+      },
+      brand: {
+          id: 5,
+          name: 'GXRL',
+          logo: 'https://www.logodesignguru.com/images/industry-logos/fashion-08.png'
+      },
       image_front: 'https://pagani-co-nz.imgix.net/products/satin-vertical-stripe-top-navytan-main-65143~1570142506.jpg?w=590&h=960&fit=crop&auto=format&bg=ffffff&s=b9c87bd84f654ff0aad8bb1e4d262d53',
       image_back: 'https://us.123rf.com/450wm/subbotina/subbotina1703/subbotina170300097/74168363-beauty-fashion-brunette-model-girl-with-perfect-makeup-trendy-accessories-and-fashion-wear.jpg?ver=6',
       image_side: 'https://us.123rf.com/450wm/prometeus/prometeus1306/prometeus130600071/20104714-close-up-art-fashion-photo-of-a-gorgeous-woman-in-paper-dress-black-and-white-.jpg?ver=6',

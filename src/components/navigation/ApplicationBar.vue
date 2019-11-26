@@ -13,7 +13,7 @@
 
             <v-menu v-model="menu" close-delay="200" max-width="900" :close-on-content-click="false" nudge-bottom="20" nudge-left="320" open-on-hover :nudge-width="200" offset-y>
                 <template v-slot:activator="{ on }">
-                  <v-btn text dark style="height: 57px" v-on="on" class="font-weight-bold title">All Categories</v-btn>
+                  <v-btn text dark style="height: 57px" v-on="on" class="font-weight-bold subtitle-2">All Categories</v-btn>
                 </template>
 
                 <v-card>

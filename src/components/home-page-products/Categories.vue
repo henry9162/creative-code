@@ -7,7 +7,7 @@
                         <v-card height="424" :elevation="hover ? 15 : 2" href="#" flat>
                             <v-img :src="image1" height="100%" position="down down">
                                 <v-hover v-slot:default="{ hover }">
-                                    <v-btn :elevation="hover ? 12 : ''" absolute bottom left x-large dark class="font-weight-black" color="rgba(231, 40, 77, 1)">TOP CATEGORY</v-btn>
+                                    <v-btn @click="$router.push({ name: 'allProduct', params: { name: 'All-Product' } })" :elevation="hover ? 12 : ''" absolute bottom left x-large dark class="font-weight-black" color="rgba(231, 40, 77, 1)">TOP CATEGORY</v-btn>
                                 </v-hover>   
                             </v-img>
                         </v-card>
@@ -17,19 +17,19 @@
                     <v-row>
                         <v-col md="6">
                             <v-hover v-slot:default="{ hover }">
-                                <v-card relative height="200" :elevation="hover ? 15 : 2" href="#" flat>
+                                <v-card @click="$router.push({ name: 'allProduct', params: { name: 'Women' } })" relative height="200" :elevation="hover ? 15 : 2" href="#" flat>
                                     <v-img :src="image2" height="100%" position="up center"> 
                                         <v-btn absolute right bottom :class="hover ? 'd-block': 'd-none'" class="category-right-icon" fab light x-small>
                                             <v-icon>mdi-arrow-right</v-icon>
                                         </v-btn>    
                                     </v-img>
-                                    <div v-if="!hover" class="headline white--text font-weight-bold" style="position: absolute; top: 85px; left: 190px">LADIES</div>
+                                    <div v-if="!hover" class="headline white--text font-weight-bold" style="position: absolute; top: 85px; left: 190px">WOMEN</div>
                                 </v-card>
                             </v-hover>
                         </v-col>
                         <v-col md="6">
                             <v-hover v-slot:default="{ hover }">
-                                <v-card height="200" :elevation="hover ? 15 : 2" href="#" flat>
+                                <v-card @click="$router.push({ name: 'allProduct', params: { name: 'Men' } })" height="200" :elevation="hover ? 15 : 2" href="#" flat>
                                     <v-img :src="image3" width="100%" height="100%" position="up center">
                                         <v-btn absolute right bottom :class="hover ? 'd-block': 'd-none'" class="category-right-icon" fab light x-small>
                                             <v-icon>mdi-arrow-right</v-icon>
@@ -43,7 +43,7 @@
                     <v-row>
                         <v-col md="6">
                             <v-hover v-slot:default="{ hover }">
-                                <v-card :elevation="hover ? 15 : 2" height="200" href="#" flat>
+                                <v-card @click="$router.push({ name: 'allProduct', params: { name: 'Kids' } })" :elevation="hover ? 15 : 2" height="200" href="#" flat>
                                     <v-img :src="image4" width="100%" height="100%" position="up center">
                                         <v-btn absolute right bottom :class="hover ? 'd-block': 'd-none'" class="category-right-icon" fab light x-small>
                                             <v-icon>mdi-arrow-right</v-icon>
@@ -54,7 +54,7 @@
                         </v-col>
                         <v-col md="6">
                             <v-hover v-slot:default="{ hover }">
-                                <v-card :elevation="hover ? 15 : 2" height="200" width="" href="#" flat>
+                                <v-card @click="$router.push({ name: 'allProduct', params: { name: 'Kids' } })" :elevation="hover ? 15 : 2" height="200" width="" href="#" flat>
                                     <v-img :src="image2" width="100%" height="100%" position="up center">
                                         <v-btn absolute right bottom :class="hover ? 'd-block': 'd-none'" class="category-right-icon" fab light x-small>
                                             <v-icon>mdi-arrow-right</v-icon>

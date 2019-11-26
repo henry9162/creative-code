@@ -143,7 +143,7 @@ export default {
         justify-content: space-between;
 
         .product-labels-left {
-            .product-labels-left-btn {
+            .product-labels-left-div {
                 transform: rotate(-42deg);
                 width: 100%;
                 margin-left: -30px

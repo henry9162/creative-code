@@ -1,21 +1,7 @@
-export const categories = [
+export default [
     {
         id: 1,
-        name: 'Men',
-        subcategories: [
-            {
-                id: 1,
-                name: 'Agbada'
-            },
-            {
-                id: 2,
-                name: 'Dansiki'
-            },
-            {
-                id: 3,
-                name: 'Senator'
-            }
-        ],
+        name: 'Agbada',
         products: [
             {
                 id: 1,
@@ -107,21 +93,7 @@ export const categories = [
     },
     {
         id: 2,
-        name: 'Women',
-        subcategories: [
-            {
-                id: 1,
-                name: 'Bridal'
-            },
-            {
-                id: 2,
-                name: 'Gown'
-            },
-            {
-                id: 3,
-                name: 'Skirt'
-            }
-        ],
+        name: 'Gown',
         products: [
             {
                 id: 2,
@@ -170,68 +142,103 @@ export const categories = [
     },
     {
         id: 3,
-        name: 'Kids',
-        subcategories: [
-            {
-                id: 1,
-                name: 'Agbada'
-            },
-            {
-                id: 2,
-                name: 'Gown'
-            },
+        name: 'Senator',
+        products: [
             {
                 id: 3,
-                name: 'Senator'
-            },
+                title: 'Marte Basket Table',
+                price: 179.99,
+                category: {
+                    id: 3,
+                    name: 'Kids',
+                    subcategories: [
+                        {
+                            id: 1,
+                            name: 'Agbada'
+                        },
+                        {
+                            id: 2,
+                            name: 'Gown'
+                        },
+                        {
+                            id: 3,
+                            name: 'Senator'
+                        },
+                        {
+                            id: 4,
+                            name: 'Dansiki'
+                        }
+                    ]
+                },
+                size: {
+                    id: 3,
+                    name: 'M',
+                },
+                featured: true,
+                color: {
+                    id: 3,
+                    name: 'orange',
+                },
+                brand: {
+                    id: 3,
+                    name: 'Brand',
+                    logo: 'https://www.logoground.com/uploads/201547762015-12-254948971polo.jpg'
+                },
+                image_front: 'https://raffles.edu.my/wp-content/uploads/2018/05/image-fashion-business-1200x628-1170x628.jpg',
+                image_back: 'https://us.123rf.com/450wm/subbotina/subbotina1703/subbotina170300097/74168363-beauty-fashion-brunette-model-girl-with-perfect-makeup-trendy-accessories-and-fashion-wear.jpg?ver=6',
+                image_side: 'https://us.123rf.com/450wm/prometeus/prometeus1306/prometeus130600071/20104714-close-up-art-fashion-photo-of-a-gorgeous-woman-in-paper-dress-black-and-white-.jpg?ver=6',
+                inventory: 20,
+                description: 'This is for kids',
+                date: '2019-09-13 11:13:26.817'
+            }
+        ]
+    },
+    {
+        id: 4,
+        name: 'Dansiki',
+        products: [
             {
                 id: 4,
-                name: 'Dansiki'
-            }
-        ],
-        products: [
-            {
-                id: 1,
-                title: 'Faux Strelitzia Leaf Pair',
-                price: 100.00,
+                title: 'Modular Velvet Sofa',
+                price: 549.00,
                 category: {
-                    id: 1,
-                    name: 'Men',
+                    id: 2,
+                    name: 'Women',
                     subcategories: [
                         {
                             id: 1,
-                            name: 'Agbada'
+                            name: 'Bridal'
                         },
                         {
                             id: 2,
-                            name: 'Dansiki'
+                            name: 'Gown'
                         },
                         {
                             id: 3,
-                            name: 'Senator'
+                            name: 'Skirt'
                         }
                     ]
                 },
                 size: {
-                    id: 1,
-                    name: 'XS',
+                    id: 4,
+                    name: 'L',
                 },
-                featured: true,
+                featured: false,
                 color: {
-                    id: 1,
-                    name: 'blue',
+                    id: 4,
+                    name: 'pink',
                 },
                 brand: {
-                    id: 1,
-                    name: 'Bree Design',
-                    logo: 'https://www.designhill.com/design-blog/wp-content/uploads/2019/04/13-1.jpg'
+                    id: 4,
+                    name: 'Ralph And Lauren',
+                    logo: 'https://www.logoground.com/uploads/201547762015-12-254948971polo.jpg'
                 },
-                image_front: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+                image_front: 'https://www.hellomagazine.com/imagenes/fashion/2019100478650/denim-jacket-puff-sleeves-river-island-back-in-stock/0-380-268/river-island-denim-jacekt-t.jpg',
                 image_back: 'https://us.123rf.com/450wm/subbotina/subbotina1703/subbotina170300097/74168363-beauty-fashion-brunette-model-girl-with-perfect-makeup-trendy-accessories-and-fashion-wear.jpg?ver=6',
                 image_side: 'https://us.123rf.com/450wm/prometeus/prometeus1306/prometeus130600071/20104714-close-up-art-fashion-photo-of-a-gorgeous-woman-in-paper-dress-black-and-white-.jpg?ver=6',
-                inventory: 2,
-                description: 'This is for men',
-                date: '2019-09-13 11:11:26.817'
+                inventory: 20,
+                description: 'This is a uniquely tailored gown for fashion cautious ladies. It goes well with any type of outing or events',
+                date: '2019-09-13 11:14:26.817'
             },
             {
                 id: 2,
@@ -277,66 +284,5 @@ export const categories = [
                 date: '2019-09-13 11:12:26.817'
             }
         ]
-    },
-]
-
-export const sizes = [
-    {
-        id: 1,
-        name: 'XS',
-    },
-    {
-        id: 2,
-        name: 'S',
-    },
-    {
-        id: 3,
-        name: 'M',
-    },
-    {
-        id: 4,
-        name: 'L',
-    },
-    {
-        id: 5,
-        name: 'XL',
-    }
-]
-
-export const materials = [
-    {
-        id: 1,
-        name: 'Ankara',
-    },
-    {
-        id: 2,
-        name: 'Lace'
-    },
-    {
-        id: 3,
-        name: 'Shifon'
-    },
-    {
-        id: 4,
-        name: 'George'
-    }
-]
-
-export const styles = [
-    {
-        id: 1,
-        name: 'Party'
-    },
-    {
-        id: 2,
-        name: 'Daytime'
-    },
-    {
-        id: 3,
-        name: 'Beachwear'
-    },
-    {
-        id: 4,
-        name: 'Office'
     }
 ]
