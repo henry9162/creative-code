@@ -51,6 +51,12 @@ export default {
         this.$store.dispatch('getAllProducts');
         this.deactivateSnackbar();
         this.$store.dispatch('persistCart');
+        this.$store.dispatch('getAllCategories');
+        this.$store.dispatch('getAllStyles');
+        this.$store.dispatch('getAllMaterials');
+        this.$store.dispatch('getAllColors');
+        this.$store.dispatch('getAllBrands');
+        this.$store.dispatch('getAllSizes');
     }
 };
 </script>

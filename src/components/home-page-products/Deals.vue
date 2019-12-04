@@ -31,7 +31,7 @@
                                         <v-expand-transition>
                                             <div v-if="hover"
                                                 class="d-flex transition-fast-in-fast-out darken-2 font-weight-bold v-card--reveal display-3 white--text"
-                                                :class="product.color"
+                                                :class="product.color.name"
                                                 style="height: 100%;"
                                             >
                                                 <v-btn @click="$modal.show('product-modal', { product: product })" fab>
@@ -43,7 +43,7 @@
                                         <div class="product-label-div">
                                             <div class="product-labels-left">
                                                 <div class="product-labels-left-btn mt-10">
-                                                    <v-btn class="ml-0" min-width="180" tile rounded small :color="product.color + ' darken-3'" dark>Custom Labels</v-btn>
+                                                    <v-btn class="ml-0" min-width="180" tile rounded small :color="product.color.name + ' darken-3'" dark>Custom Labels</v-btn>
                                                 </div>
                                             </div>
                                             <div class="product-labels-right">
@@ -61,7 +61,7 @@
 
                                     <v-card-text class="pt-6" style="position: relative;">
                                         <v-hover v-slot:default="{ hover }">
-                                            <v-btn @click="addToCart({ productId: product.id, quantity: quantity, inventory: product.inventory })" :elevation="hover ? 12 : 2" absolute :color="product.color" class="white--text" fab small right top>
+                                            <v-btn @click="addToCart({ productId: product.id, quantity: quantity, inventory: product.inventory })" :elevation="hover ? 12 : 2" absolute :color="product.color.name" class="white--text" fab small right top>
                                                 <v-icon>mdi-cart</v-icon>
                                             </v-btn>
                                         </v-hover>

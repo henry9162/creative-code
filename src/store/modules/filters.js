@@ -34,6 +34,9 @@ const mutations = {
     setFilteredProduct(state, payload) {
         state.filteredProducts = payload;
     },
+    emptyFilteredProduct(state) {
+        state.filteredProducts = []
+    },
     setCategories(state, payload){
         state.categories = payload;
     },

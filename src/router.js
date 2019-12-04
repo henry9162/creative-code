@@ -54,10 +54,9 @@ export default new Router({
       component: checkout
     },
     {
-      path: '/all-product/:name',
+      path: '/all-product',
       name: 'allProduct',
-      component: allProduct,
-      props: true,
+      component: allProduct
     },
     // {
     //   path: '/about',

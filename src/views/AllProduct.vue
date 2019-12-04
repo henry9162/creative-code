@@ -6,7 +6,7 @@
         </div>
 
         <!-- Product title parallax -->
-        <titleParalax>{{ name }}</titleParalax>
+        <titleParalax>{{ $route.query.name ? $route.query.name : 'All-Product' }}</titleParalax>
 
         <v-container class="white px-0 pt-0 pb-0" fluid>
             <v-row class="white mx-0 px-0 pb-0">
@@ -275,8 +275,6 @@ import productList from '../components/ProductList'
 import { mapState, mapGetters, mapActions } from 'vuex'
 
 export default {
-    props: ['name'],
-
     components: { titleParalax, productModal, productList },
 
     mixins: [ breadcrumbs ],
@@ -340,26 +338,18 @@ export default {
     },
 
     mounted() {
-        console.log(this.name);
-        if (this.name && this.name != 'All-Product') {
-            this.$store.dispatch('categoryProducts', this.name)
+        let name = this.$route.query.name;
+        if (name) {
+            this.$store.dispatch('categoryProducts', name)
             this.expandCategories = true
             this.expandPrice = false
             this.expandSizes = false
             this.expandStyles = false
             this.expandColors = false
+        } else {
+            this.$store.commit('emptyFilteredProduct');
         }
-    },
-
-    created() {
-        this.$store.dispatch('getAllCategories');
-        this.$store.dispatch('getAllStyles');
-        this.$store.dispatch('getAllMaterials');
-        this.$store.dispatch('getAllColors');
-        this.$store.dispatch('getAllBrands');
-        this.$store.dispatch('getAllSizes');
     }
-
 }
 
 </script>
